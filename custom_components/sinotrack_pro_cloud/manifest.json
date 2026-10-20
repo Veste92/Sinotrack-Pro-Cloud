@@ -1,0 +1,15 @@
+{
+  "domain": "sinotrack_pro_cloud",
+  "name": "SinoTrack Pro Cloud",
+  "codeowners": [
+    "@Veste92"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/Veste92/Sinotrack-Pro-Cloud",
+  "issue_tracker": "https://github.com/Veste92/Sinotrack-Pro-Cloud/issues",
+  "iot_class": "cloud_polling",
+  "requirements": [
+    "aiohttp>=3.9.0"
+  ],
+  "version": "1.2.0"
+}
