@@ -40,10 +40,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
             coordinator, entry, "odometer_miles", "Total Mileage",
             UnitOfLength.MILES, "mdi:counter"
         ),
-        SinoTrackSensor(
-            coordinator, entry, "start_mileage", "Initial Mileage (diagnostic)",
-            None, "mdi:counter"
-        ),
     ]
 
     async_add_entities(sensors)
