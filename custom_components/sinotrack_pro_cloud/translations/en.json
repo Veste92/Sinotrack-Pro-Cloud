@@ -1,0 +1,31 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "SinoTrack Pro Cloud",
+        "description": "Connect your SinoTrack account and tracker.",
+        "data": {
+          "username": "Username",
+          "password": "Password",
+          "device_id": "Tracker/device ID",
+          "server": "Server URL"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect or authenticate with SinoTrack."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "SinoTrack Pro Cloud options",
+        "description": "Configure polling and GPS freshness.",
+        "data": {
+          "scan_interval": "Polling interval (seconds)",
+          "stale_after": "Mark GPS fix stale after (seconds)"
+        }
+      }
+    }
+  }
+}

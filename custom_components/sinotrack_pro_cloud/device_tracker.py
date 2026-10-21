@@ -1,25 +1,15 @@
-
 """SinoTrack cloud device tracker."""
-
 from homeassistant.components.device_tracker import SourceType, TrackerEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-
 from .const import DOMAIN, CONF_DEVICE_ID
 
 
 async def async_setup_entry(hass, entry, async_add_entities):
-    async_add_entities(
-        [
-            SinoTrackTracker(
-                hass.data[DOMAIN][entry.entry_id]["coordinator"],
-                entry,
-            )
-        ]
-    )
+    async_add_entities([SinoTrackTracker(hass.data[DOMAIN][entry.entry_id]["coordinator"], entry)])
 
 
 class SinoTrackTracker(CoordinatorEntity, TrackerEntity):
-    _attr_name = "SinoTrack vehicle"
+    """Represent the configured tracker."""
     _attr_has_entity_name = True
     _attr_icon = "mdi:car"
     _attr_should_poll = False
@@ -36,11 +26,11 @@ class SinoTrackTracker(CoordinatorEntity, TrackerEntity):
 
     @property
     def latitude(self):
-        return self.coordinator.data.get("latitude") if self.coordinator.data else None
+        return (self.coordinator.data or {}).get("latitude")
 
     @property
     def longitude(self):
-        return self.coordinator.data.get("longitude") if self.coordinator.data else None
+        return (self.coordinator.data or {}).get("longitude")
 
     @property
     def location_accuracy(self):
@@ -50,8 +40,10 @@ class SinoTrackTracker(CoordinatorEntity, TrackerEntity):
     def extra_state_attributes(self):
         data = self.coordinator.data or {}
         return {
-            "speed_kmh": data.get("speed"),
-            "heading": data.get("heading"),
-            "device_id": self._device_id,
-            "timestamp": data.get("timestamp"),
+            "speed_kmh": data.get("speed"), "heading": data.get("heading"),
+            "device_id": self._device_id, "timestamp": data.get("timestamp"),
+            "last_gps_update": data.get("last_gps_update"),
+            "gps_fix_age_seconds": data.get("gps_fix_age_seconds"),
+            "gps_is_stale": data.get("gps_is_stale"),
+            "gps_stale_after_seconds": data.get("gps_stale_after_seconds"),
         }

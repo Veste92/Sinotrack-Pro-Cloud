@@ -1,7 +1,16 @@
+"""Integration constants."""
 DOMAIN = "sinotrack_pro_cloud"
 CONF_USERNAME = "username"
 CONF_PASSWORD = "password"
 CONF_DEVICE_ID = "device_id"
 CONF_SERVER = "server"
+CONF_SCAN_INTERVAL = "scan_interval"
+CONF_STALE_AFTER = "stale_after"
 DEFAULT_SERVER = "https://246.sinotrack.com"
-SCAN_INTERVAL = 30
+DEFAULT_SCAN_INTERVAL = 30
+DEFAULT_STALE_AFTER = 900
+MIN_SCAN_INTERVAL = 30
+MAX_SCAN_INTERVAL = 3600
+MIN_STALE_AFTER = 60
+MAX_STALE_AFTER = 86400
+SCAN_INTERVAL = DEFAULT_SCAN_INTERVAL
